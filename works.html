@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山田 花子 | 作品集 WORKS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #FAF8F5;
+            --card-bg: #FFFFFF;
+            --text-main: #2C2C2C;
+            --text-sub: #7A7A7A;
+            --accent-color: #C85A5A;
+            --accent-light: #F7ECEB;
+            --border-color: #E8E3DC;
+            --font-serif: 'Noto Serif JP', 'Yu Mincho', serif;
+            --font-sans: 'Noto Sans TC', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-logo span {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 0.1rem 0.4rem;
+            border-radius: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            text-decoration: none;
+            padding-bottom: 0.2rem;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-link.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 6rem 1.5rem;
+            min-height: calc(100vh - 160px);
+        }
+
+        .section-header {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: var(--font-serif);
+            letter-spacing: 0.2em;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0.6;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .work-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .work-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: #EEE9E0;
+        }
+
+        .work-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .work-card:hover .work-image {
+            transform: scale(1.05);
+        }
+
+        .work-info {
+            padding: 1.5rem;
+        }
+
+        .work-category {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .work-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            font-weight: 400;
+        }
+
+        .work-desc {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+        }
+
+        .work-tags {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .work-tag {
+            font-size: 0.75rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 0.1rem 0.5rem;
+            border-radius: 3px;
+            color: var(--text-sub);
+        }
+
+        .contact-prompt {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--text-main);
+            color: #FFFFFF;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            background-color: var(--bg-color);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            .nav-link {
+                font-size: 0.85rem;
+            }
+
+            .vertical-text {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 頁首導覽列 -->
+    <header>
+        <a href="index.html" class="brand-logo">
+            山田 花子 <span>ポートフォリオ</span>
+        </a>
+        <nav>
+            <a href="./index.html" class="nav-link">ホーム / 首頁</a>
+            <a href="./works.html" class="nav-link active">作品 / 作品集</a>
+            <a href="./contact.html" class="nav-link">問合せ / 聯絡我</a>
+        </nav>
+
+    </header>
+
+    <!-- 主要內容區：作品列表 -->
+    <main>
+        <div class="section-header">
+            <h1 class="section-title">制作実績</h1>
+            <p class="section-subtitle">MY WORKS</p>
+            <div class="vertical-text">創造と挑戦</div>
+        </div>
+
+        <div class="works-grid">
+
+            <!-- 作品 1 -->
+            <article class="work-card">
+                <div class="work-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=600&q=80"
+                        alt="和風茶室" class="work-image"
+                        onerror="this.src='https://placehold.co/400x300/F4EBE8/C85A5A?text=Project+1'">
+                </div>
+                <div class="work-info">
+                    <span class="work-category">Web Design</span>
+                    <h2 class="work-title">和風茶室網頁 Redesign</h2>
+                    <p class="work-desc">為傳統茶道教室重新構思的形象網頁，運用溫潤色彩展示茶道精神與線上預約課程。</p>
+                    <div class="work-tags">
+                        <span class="work-tag">HTML/CSS</span>
+                        <span class="work-tag">Figma</span>
+                        <span class="work-tag">Responsive</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 作品 2 -->
+            <article class="work-card">
+                <div class="work-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80"
+                        alt="日語 App" class="work-image"
+                        onerror="this.src='https://placehold.co/400x300/F4EBE8/C85A5A?text=Project+2'">
+                </div>
+                <div class="work-info">
+                    <span class="work-category">UI/UX Concept</span>
+                    <h2 class="work-title">日語單字記憶 App</h2>
+                    <p class="work-desc">以極簡介面降低學習壓力的單字卡 App 概念設計，強調無干擾的直覺複習流程。</p>
+                    <div class="work-tags">
+                        <span class="work-tag">UI Design</span>
+                        <span class="work-tag">User Flow</span>
+                        <span class="work-tag">Prototype</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 作品 3 -->
+            <article class="work-card">
+                <div class="work-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80"
+                        alt="雜貨品牌" class="work-image"
+                        onerror="this.src='https://placehold.co/400x300/F4EBE8/C85A5A?text=Project+3'">
+                </div>
+                <div class="work-info">
+                    <span class="work-category">Branding</span>
+                    <h2 class="work-title">獨立手作雜貨品牌視覺</h2>
+                    <p class="work-desc">包含 Logotype 標準字、標準色規範、名片與線上展示頁面的全套品牌識別設計。</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Brand Identity</span>
+                        <span class="work-tag">Illustrator</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 作品 4 -->
+            <article class="work-card">
+                <div class="work-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=600&q=80"
+                        alt="京都展覽" class="work-image"
+                        onerror="this.src='https://placehold.co/400x300/F4EBE8/C85A5A?text=Project+4'">
+                </div>
+                <div class="work-info">
+                    <span class="work-category">Landing Page</span>
+                    <h2 class="work-title">京都傳統工藝展活動頁</h2>
+                    <p class="work-desc">融合傳統和風紋樣與現代排版，為工藝展覽打造精緻且資訊清晰的活動宣傳網站。</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Web Layout</span>
+                        <span class="work-tag">Grid System</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 作品 5 -->
+            <article class="work-card">
+                <div class="work-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80"
+                        alt="喫茶店點餐" class="work-image"
+                        onerror="this.src='https://placehold.co/400x300/F4EBE8/C85A5A?text=Project+5'">
+                </div>
+                <div class="work-info">
+                    <span class="work-category">Web Development</span>
+                    <h2 class="work-title">喫茶店線上點餐系統介面</h2>
+                    <p class="work-desc">針對平板與手機端優化的線上菜單與點餐介面，提供優雅流暢的顧客點餐體驗。</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Frontend</span>
+                        <span class="work-tag">Mobile First</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 作品 6 -->
+            <article class="work-card">
+                <div class="work-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=600&q=80"
+                        alt="攝影雜誌" class="work-image"
+                        onerror="this.src='https://placehold.co/400x300/F4EBE8/C85A5A?text=Project+6'">
+                </div>
+                <div class="work-info">
+                    <span class="work-category">Editorial & Photography</span>
+                    <h2 class="work-title">季刊雜誌視覺與個人攝影</h2>
+                    <p class="work-desc">紀錄四季光影變化的個人攝影作品集與實體雜誌刊物視覺版型規劃。</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Photography</span>
+                        <span class="work-tag">InDesign</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- 導向聯絡頁 -->
+        <div class="contact-prompt">
+            <h2>有興趣展開合作或交流嗎？</h2>
+            <p style="color: var(--text-sub); margin-top: 0.5rem;">歡迎隨時與我聯繫，期待與您的對話！</p>
+            <a href="contact.html" class="btn">聯絡我 &rarr;</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Yamada Hanako. All Rights Reserved. | Pure HTML & CSS Portfolio</p>
+    </footer>
+
+</body>
+
+</html>

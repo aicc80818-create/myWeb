@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山田 花子 | 聯絡我 CONTACT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #FAF8F5;
+            --card-bg: #FFFFFF;
+            --text-main: #2C2C2C;
+            --text-sub: #7A7A7A;
+            --accent-color: #C85A5A;
+            --accent-light: #F7ECEB;
+            --border-color: #E8E3DC;
+            --font-serif: 'Noto Serif JP', 'Yu Mincho', serif;
+            --font-sans: 'Noto Sans TC', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-logo span {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 0.1rem 0.4rem;
+            border-radius: 2px;
+        }
+
+        nav { display: flex; gap: 2rem; }
+
+        .nav-link {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            text-decoration: none;
+            padding-bottom: 0.2rem;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover { color: var(--accent-color); }
+        .nav-link.active { color: var(--accent-color); border-bottom: 2px solid var(--accent-color); }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 6rem 1.5rem;
+            min-height: calc(100vh - 160px);
+        }
+
+        .section-header { position: relative; margin-bottom: 3rem; }
+        .section-title { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 400; letter-spacing: 0.1em; }
+        .section-subtitle { font-size: 0.85rem; color: var(--text-sub); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.2rem; }
+        
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: var(--font-serif);
+            letter-spacing: 0.2em;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            position: absolute; right: 0; top: 0; opacity: 0.6;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 3rem;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-sub);
+            font-size: 0.92rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent-light);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .contact-detail-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: block;
+        }
+
+        .contact-value {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        /* 表單樣式 */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text-main);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-color);
+            background-color: #FFFFFF;
+        }
+
+        .submit-btn {
+            background-color: var(--text-main);
+            color: #FFFFFF;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 4px;
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        .form-success-msg {
+            display: none;
+            background-color: var(--accent-light);
+            color: var(--accent-color);
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            text-align: center;
+            border: 1px solid var(--accent-color);
+        }
+
+        .faq-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .faq-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-a {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            background-color: var(--bg-color);
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem; }
+            nav { gap: 1rem; }
+            .nav-link { font-size: 0.85rem; }
+            .contact-container { grid-template-columns: 1fr; padding: 1.5rem; }
+            .vertical-text { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頁首導覽列 -->
+    <header>
+        <a href="index.html" class="brand-logo">
+            山田 花子 <span>ポートフォリオ</span>
+        </a>
+        <nav>
+            <a href="./index.html" class="nav-link">ホーム / 首頁</a>
+            <a href="./works.html" class="nav-link">作品 / 作品集</a>
+            <a href="./contact.html" class="nav-link active">問合せ / 聯絡我</a>
+        </nav>
+    </header>
+
+    <!-- 主要內容區：聯絡表單與資訊 -->
+    <main>
+        <div class="section-header">
+            <h1 class="section-title">お問い合わせ</h1>
+            <p class="section-subtitle">GET IN TOUCH</p>
+            <div class="vertical-text">ご縁に感謝</div>
+        </div>
+
+        <div class="contact-container">
+            <!-- 聯絡資訊欄 -->
+            <div class="contact-info">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    <span>目前可接受自由接案與合作提案</span>
+                </div>
+                <h3>非常歡迎隨時與我聯繫！</h3>
+                <p>如果您對我的作品感興趣、希望討論合作機會或有任何設計需求，歡迎填寫表單或透過以下管道發送郵件。</p>
+                
+                <div class="contact-detail-item">
+                    <span class="contact-label">E-Mail / 電子郵件</span>
+                    <span class="contact-value">hanako.yamada@example.com</span>
+                </div>
+
+                <div class="contact-detail-item">
+                    <span class="contact-label">Location / 居住地點</span>
+                    <span class="contact-value">台北市, 台灣 / 東京, 日本</span>
+                </div>
+
+                <div class="contact-detail-item">
+                    <span class="contact-label">Socials / 社群平台</span>
+                    <span class="contact-value">Instagram / GitHub / X (Twitter)</span>
+                </div>
+            </div>
+
+            <!-- 聯絡表單 -->
+            <div>
+                <form id="contactForm" class="contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">お名前 / 您的姓名 *</label>
+                        <input type="text" id="name" name="name" placeholder="例：王小明" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">メールアドレス / 電子郵件 *</label>
+                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">件名 / 諮詢主題</label>
+                        <input type="text" id="subject" name="subject" placeholder="例：網頁設計合作討論">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">メッセージ / 訊息內容 *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="請在此輸入您的留言內容..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">送信する / 送出訊息</button>
+                </form>
+
+                <div id="successMsg" class="form-success-msg">
+                    感謝您的來信！訊息已成功傳送，我會盡快回覆您。
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h3 class="faq-title">常見問題 / FAQ</h3>
+            
+            <div class="faq-item">
+                <p class="faq-q">Q: 專案開發的一般流程為何？</p>
+                <p class="faq-a">答：從前期需求討論、Wireframe 視覺原型設計、HTML/CSS 程式撰寫到最後的跨裝置測試與上線輔導，皆會保持密切溝通。</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-q">Q: 能否針對手機版（響應式 RWD）進行優化？</p>
+                <p class="faq-a">答：是的！所有設計與程式開發均採用 Mobile-First 理念，確保在手機、平板與桌上型電腦皆有最佳視覺體驗。</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Yamada Hanako. All Rights Reserved. | Pure HTML & CSS Portfolio</p>
+    </footer>
+
+    <script>
+        // 表單送出處理（不跳出警示框，展示溫和提示訊息）
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('successMsg').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

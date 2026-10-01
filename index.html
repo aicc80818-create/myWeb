@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山田 花子 | 首頁 PORTFOLIO</title>
+    <!-- 引入日系風格字體 (Noto Serif JP & Noto Sans TC) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #FAF8F5;
+            /* 溫潤米白/和紙背景 */
+            --card-bg: #FFFFFF;
+            /* 純白卡片背景 */
+            --text-main: #2C2C2C;
+            /* 墨黑內文 */
+            --text-sub: #7A7A7A;
+            /* 灰色次要文字 */
+            --accent-color: #e7e6f5;
+            /* 朱紅/椿色點綴 */
+            --accent-light: #d89417;
+            /* 淡粉紅背景 */
+            --border-color: #E8E3DC;
+            /* 柔和邊框線條 */
+            --font-serif: 'Noto Serif JP', 'Yu Mincho', serif;
+            --font-sans: 'Noto Sans TC', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-logo span {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 0.1rem 0.4rem;
+            border-radius: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            text-decoration: none;
+            padding-bottom: 0.2rem;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-link.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 6rem 1.5rem;
+            min-height: calc(100vh - 160px);
+        }
+
+        .section-header {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: var(--text-main);
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: var(--font-serif);
+            letter-spacing: 0.2em;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0.6;
+        }
+
+        .profile-card {
+            display: grid;
+            grid-template-columns: 210px 1fr;
+            gap: 5rem;
+            background-color: var(--card-bg);
+            padding: 3.5rem;
+            border-radius: 8px;
+            border: 5px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(48, 161, 13, 0.02);
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+
+        .profile-avatar {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 6px;
+            filter: grayscale(15%);
+            transition: var(--transition);
+        }
+
+        .profile-avatar:hover {
+            filter: grayscale(0%);
+        }
+
+        .profile-info h2 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .profile-tag {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--accent-color);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .profile-bio {
+            color: var(--text-sub);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            accent-light:var(--accent-light);
+            gap: 1.5rem;
+            margin-bottom: 6rem;
+        }
+
+        .philosophy-item {
+            background-color: var(--card-bg);
+            padding: 1.8rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+            /* 
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--accent-color);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem; 
+            */
+
+        .philosophy-item h3 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-color);
+            border-radius: 20px;
+            background-color: var(--accent-light);
+            padding-left: 10px;
+        }
+
+        .philosophy-item p {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        .cta-box {
+            text-align: center;
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--text-main);
+            color: #880a82;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            background-color: var(--bg-color);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            .nav-link {
+                font-size: 0.95rem;
+            }
+
+            .profile-card {
+                grid-template-columns: 3fr;
+                gap: 1.5rem;
+                padding: 2.5rem;
+            }
+
+            .profile-avatar {
+                height: 220px;
+            }
+
+            .vertical-text {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 頁首導覽列 (連結至三個各自獨立的 HTML 檔案) -->
+    <header>
+        <a href="index.html" class="brand-logo">
+            山田 花子 <span>ポートフォリオ</span>
+        </a>
+        <nav>
+            <a href="./index.html" class="nav-link active">ホーム / 首頁</a>
+            <a href="./works.html" class="nav-link">作品 / 作品集</a>
+            <a href="./contact.html" class="nav-link">問合せ / 聯絡我</a>
+        </nav>
+    </header>
+
+    <!-- 主要內容區：首頁 / 個人簡介 -->
+    <main>
+        <div class="section-header">
+            <h1 class="section-title">自己紹介</h1>
+            <p class="section-subtitle">ABOUT ME</p>
+            <div class="vertical-text">デザインと生活</div>
+        </div>
+
+        <!-- 個人資料卡片 -->
+        <div class="profile-card">
+            <img src="./img/mibo.png" alt="個人照片" class="profile-avatar"
+                onerror="this.src='https://placehold.co/280x280/F4EBE8/C85A5A?text=Hanako'">
+            <div class="profile-info">
+                <span class="profile-tag">UI/UX 設計師 & 網頁開發初學者</span>
+                <h2>毛球 花子 (Fully Daily)</h2>
+                <p class="profile-bio">
+                    熱愛100%的深海鮪魚罐頭~我相信好的魚就像是一杯白開水，簡約、順暢且沒有魚刺。目前正專注於前端基礎技術（HTML/CSS）與視覺設計的結合應用。
+                </p>
+                <div class="skills-list">
+                    <span class="skill-item">HTML5 / CSS3</span>
+                    <span class="skill-item">Figma / UI Design</span>
+                    <span class="skill-item">Photoshop / Illustrator</span>
+                    <span class="skill-item">攝影 / Photography</span>
+                    <span class="skill-item">品牌視覺規劃</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 設計理念三欄卡片 -->
+        <div class="philosophy-grid">
+            <div class="philosophy-item">
+                <h3>01. 鮪魚</h3>
+                <p>適當的留白能讓視覺呼吸，引導使用者將注意力聚焦在最重要的核心內容上。</p>
+            </div>
+            <div class="philosophy-item">
+                <h3>02. 鮭魚</h3>
+                <p>汲取大地與和紙的柔和色彩，營造出讓人感到放鬆與舒適的網頁視覺體驗。</p>
+            </div>
+            <div class="philosophy-item">
+                <h3>03. 海蝦</h3>
+                <p>從字距排版到滑鼠懸停的微互動，用心打磨每一個細小的視覺品質。</p>
+            </div>
+        </div>
+
+        <!-- 導引至作品頁的 CTA 區塊 -->
+        <div class="cta-box">
+            <h2>探索我的最新作品</h2>
+            <p style="color: var(--text-sub); font-size: 0.9rem; margin-top: 0.5rem;">包含網頁設計、UI 介面發想與品牌識別專案</p>
+            <a href="works.html" class="btn">前往作品集 &rarr;</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Yamada Hanako. All Rights Reserved. | Pure HTML & CSS Portfolio</p>
+    </footer>
+
+</body>
+
+</html>
